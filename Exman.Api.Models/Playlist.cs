@@ -4,7 +4,9 @@ using System.Text;
 
 namespace Exman.Api.Models
 {
-    class Playlist
+    public class Playlist
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

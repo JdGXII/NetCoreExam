@@ -4,7 +4,9 @@ using System.Text;
 
 namespace Exman.Api.Models
 {
-    class MediaType
+    public class MediaType
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

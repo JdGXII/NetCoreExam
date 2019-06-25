@@ -4,7 +4,16 @@ using System.Text;
 
 namespace Exman.Api.Models
 {
-    class Track
+    public class Track
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int AlbumId { get; set; }
+        public int MediaTypeId { get; set; }
+        public int GenreId { get; set; }
+        public string Composer { get; set; }
+        public int Milliseconds { get; set; }
+        public int Bytes { get; set; }
+        public float UnitPrice { get; set; }
     }
 }
