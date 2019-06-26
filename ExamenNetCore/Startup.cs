@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace ExamenNetCore
 {
@@ -51,6 +52,16 @@ namespace ExamenNetCore
             services.AddTransient<IRepository<Playlist>, Repository<Playlist>>();
             services.AddTransient<IRepository<PlaylistTrack>, Repository<PlaylistTrack>>();
             services.AddTransient<IRepository<Track>, Repository<Track>>();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Examen API",
+                    Version = "v1"
+                });
+                c.CustomSchemaIds(x => x.FullName);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,6 +86,14 @@ namespace ExamenNetCore
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json",
+                    "Examen Api v1");
             });
         }
     }
