@@ -12,4 +12,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Examen.Api.Repository.SqlServer\Examen.Api.Repository.SqlServer.csproj" />
+    <ProjectReference Include="..\Examen.Api.Repository\Examen.Api.Repository.csproj" />
+    <ProjectReference Include="..\Exman.Api.Models\Exman.Api.Models.csproj" />
+  </ItemGroup>
+
 </Project>

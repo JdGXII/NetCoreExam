@@ -2,10 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Belatrix.WebApi.Repository.Postgresql;
+using Examen.Api.Repository;
+using Examen.Api.Repository.SqlServer;
+using Exman.Api.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,6 +32,25 @@ namespace ExamenNetCore
         {
             services.AddControllers()
                 .AddNewtonsoftJson();
+            
+
+            services.AddEntityFrameworkSqlServer()
+                .AddDbContext<ExamenDbContext>(
+                opt => opt.UseSqlServer(Configuration.GetConnectionString("sqlServer"),
+                b => b.MigrationsAssembly("ExamenNetCoreApi")))
+               .BuildServiceProvider();
+
+            services.AddTransient<IRepository<Customer>, Repository<Customer>>();
+            services.AddTransient<IRepository<Album>, Repository<Album>>();
+            services.AddTransient<IRepository<Artist>, Repository<Artist>>();
+            services.AddTransient<IRepository<Employee>, Repository<Employee>>();
+            services.AddTransient<IRepository<Genre>, Repository<Genre>>();
+            services.AddTransient<IRepository<Invoice>, Repository<Invoice>>();
+            services.AddTransient<IRepository<InvoiceItem>, Repository<InvoiceItem>>();
+            services.AddTransient<IRepository<MediaType>, Repository<MediaType>>();
+            services.AddTransient<IRepository<Playlist>, Repository<Playlist>>();
+            services.AddTransient<IRepository<PlaylistTrack>, Repository<PlaylistTrack>>();
+            services.AddTransient<IRepository<Track>, Repository<Track>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
