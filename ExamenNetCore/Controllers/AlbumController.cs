@@ -1,4 +1,5 @@
 ﻿using Examen.Api.Repository;
+using ExamenNetCoreApi.Filters;
 using Exman.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -17,7 +18,8 @@ namespace ExamenNetCoreApi.Controllers
             }
 
             [HttpGet]
-            public async Task<ActionResult<IEnumerable<Album>>> GetAlbums()
+            [AlbumResultFilter]
+            public async Task<ActionResult<IEnumerable<ViewModels.Album>>> GetAlbums()
             {
                 var list = await _repository.Read();
                 return Ok(list);

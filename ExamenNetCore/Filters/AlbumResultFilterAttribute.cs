@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ExamenNetCoreApi.Filters
 {
-    public class PlaylistResultFilterAttribute : ResultFilterAttribute
+    public class AlbumResultFilterAttribute : ResultFilterAttribute
     {
         public override async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
         {
@@ -15,7 +17,9 @@ namespace ExamenNetCoreApi.Filters
             {
                 await next();
                 return;
-            }           
+            }
+
+            resultFromAction.Value = Mapper.Map<IEnumerable<ViewModels.Album>>(resultFromAction.Value);
 
             await next();
         }

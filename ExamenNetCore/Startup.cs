@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Belatrix.WebApi.Repository.Postgresql;
 using Examen.Api.Repository;
 using Examen.Api.Repository.SqlServer;
+using ExamenNetCoreApi.Profiles;
 using Exman.Api.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,6 +33,13 @@ namespace ExamenNetCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AddProfile<AlbumProfile>();
+            });
+
+            services.AddAutoMapper(typeof(AlbumProfile).Assembly);
+
             services.AddControllers()
                 .AddNewtonsoftJson();
             
