@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Exman.Api.Models
+namespace ExamenNetCoreApi.ViewModels
 {
     public class Track
     {
-        public Track()
-        {
-            InvoiceItems = new HashSet<InvoiceItem>();
-            PlaylistTracks = new HashSet<PlaylistTrack>();
-        }
-        public int Id { get; set; }
         public string Name { get; set; }
         public int AlbumId { get; set; }
         public int MediaTypeId { get; set; }
@@ -21,9 +16,5 @@ namespace Exman.Api.Models
         public int Bytes { get; set; }
         public float UnitPrice { get; set; }
         public Album Album { get; set; }
-        public MediaType MediaType { get; set; }
-        public Genre Genre { get; set; }
-        public ICollection<InvoiceItem> InvoiceItems { get; set; }
-        public ICollection<PlaylistTrack> PlaylistTracks { get; set; }
     }
 }

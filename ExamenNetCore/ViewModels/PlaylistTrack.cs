@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Exman.Api.Models
+namespace ExamenNetCoreApi.ViewModels
 {
     public class PlaylistTrack
     {
         public int PlaylistId { get; set; }
         public int TrackId { get; set; }
-        public Playlist Playlist { get; set; }
-        public Track Track { get; set; }
     }
 }

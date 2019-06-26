@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Exman.Api.Models
+namespace ExamenNetCoreApi.ViewModels
 {
     public class Employee
     {
-        public Employee()
-        {
-            Customers = new HashSet<Customer>();
-            EmployeesRelated = new HashSet<Employee>();
-        }
-
-        public int Id { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Title { get; set; }
@@ -26,7 +21,5 @@ namespace Exman.Api.Models
         public string Phone { get; set; }
         public string Fax { get; set; }
         public string Email { get; set; }
-        public ICollection<Customer> Customers { get; set; }
-        public ICollection<Employee> EmployeesRelated { get; set; }
     }
 }

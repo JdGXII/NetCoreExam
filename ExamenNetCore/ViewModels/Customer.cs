@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Exman.Api.Models
+namespace ExamenNetCoreApi.ViewModels
 {
     public class Customer
     {
-        public Customer() => Invoices = new HashSet<Invoice>();
-
-        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Company { get; set; }
@@ -19,7 +19,5 @@ namespace Exman.Api.Models
         public string Fax { get; set; }
         public string Email { get; set; }
         public int SupportRepId { get; set; }
-        public Employee Employee { get; set; }
-        public ICollection<Invoice> Invoices { get; set; }
     }
 }

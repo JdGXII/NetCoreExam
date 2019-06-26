@@ -1,14 +1,13 @@
-﻿using System;
+﻿using Exman.Api.Models;
+using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Exman.Api.Models
+namespace ExamenNetCoreApi.ViewModels
 {
     public class Playlist
     {
-        public Playlist() => PlaylistTracks = new HashSet<PlaylistTrack>();
-
-        public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<PlaylistTrack> PlaylistTracks { get; set; }
     }

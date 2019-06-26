@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Exman.Api.Models;
+using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Exman.Api.Models
+namespace ExamenNetCoreApi.ViewModels
 {
     public class MediaType
     {
-        public MediaType() => Tracks = new HashSet<Track>();
-        public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<Track> Tracks { get; set; }
     }

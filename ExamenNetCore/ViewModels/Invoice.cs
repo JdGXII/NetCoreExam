@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Exman.Api.Models
+namespace ExamenNetCoreApi.ViewModels
 {
     public class Invoice
     {
-        public Invoice() => InvoiceItems = new HashSet<InvoiceItem>();
-
-        public int Id { get; set; }
-        public int CustomerId { get; set; }
         public DateTime InvoiceDate { get; set; }
         public string BillingAddress { get; set; }
         public string BillingCity { get; set; }
